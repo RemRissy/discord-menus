@@ -103,26 +103,38 @@ export class Menu {
    * @param {any} emitter
    * @constructor
    */
-  constructor(data: any, token: string, emitter: any) {
-    this.emitter = emitter;
-    if (!data) throw new Error('INVALID_MENU_DATA');
-    this.channelID = data.channel_id;
-    this.id = data.id;
-    this.guildID = data.guild_id;
-    this.applicationID = data.application_id;
-    this.customID = data.data.custom_id;
-    this.values = data.data.values;
-    this.token = data.token;
-    this.member = {
-      avatar: data.member.user.avatar,
-      id: data.member.user.id,
-      username: data.member.user.username,
-      discriminator: data.member.user.discriminator,
-      tag: `${data.member.user.username}#${data.member.user.discriminator}`,
-    };
-    this._token = token;
-    this.message = new Message(data.message, this._token, this);
-  }
+    constructor(data, token, emitter) {
+        this.emitter = emitter;
+        if (!data)
+            throw new Error('INVALID_MENU_DATA');
+        this.channelID = data.channel_id;
+        this.id = data.id;
+        this.guildID = data.guild_id;
+        this.applicationID = data.application_id;
+        this.customID = data.data.custom_id;
+        this.values = data.data.values;
+        this.token = data.token;
+        if (data.user) {
+            this.member = {
+                avatar: data.user.avatar,
+                id: data.user.id,
+             username: data.user.username,
+            discriminator: data.user.discriminator,
+            tag: `${data.user.username}#${data.user.discriminator}`,
+            };
+        }else{
+            this.member = {
+                avatar: data.member.user.avatar,
+                id: data.member.user.id,
+             username: data.member.user.username,
+            discriminator: data.member.user.discriminator,
+            tag: `${data.member.user.username}#${data.member.user.discriminator}`,
+            };
+        }
+       
+        this._token = token;
+        this.message = new Message_1.Message(data.message, this._token, this);
+    }
 
   /**
    * Reply to the interaction
