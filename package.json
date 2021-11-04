@@ -1,5 +1,5 @@
 {
-  "name": "discord-menus",
+  "name": "discord-menus-v2",
   "version": "1.0.8",
   "description": "Create beautiful menus in Discord, with ease!",
   "main": "./src/index.ts",
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/RemyK888/discord-menus.git"
+    "url": "git+https://github.com/RemRissy/discord-menus.git"
   },
   "keywords": [
     "discord-menus",
