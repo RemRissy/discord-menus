@@ -107,7 +107,13 @@ export class DiscordMenus extends EventEmitter {
     } else {
       this.emit('WARN', 'NO_MENU_PROVIDED');
     }
-    await fetch(`https://discord.com/api/v9/channels/${message.channel.id}/messages`, {
+       let iid  = null
+            if ( typeof message.channelID !== 'undefined') {
+                iid = message.channelID
+            }else {
+                iid =  message.channel.id
+            }
+    await fetch(`https://discord.com/api/v9/channels/${iid}/messages`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
